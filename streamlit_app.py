@@ -5,6 +5,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import altair as alt
 
+sns.set_palette("pastel")
+
 from utils import load_data
 
 with st.echo(code_location='below'):
@@ -19,10 +21,11 @@ with st.echo(code_location='below'):
     st.subheader('Raw Titanic data')
     st.write(df)
 
-    st.subheader("# of people on Titanic by Age")
+    st.subheader('#of people by age')
 
-    hist_values = np.histogram(df["Age"], bins=24, range=(0,24))[0]
-
-    st.bar_chart(hist_values)
+    fig = plt.figure(figsize=(16, 9))
+    sns.histplot(df["Age"], bins=75)
+    plt.title("# of people by Age")
+    st.pyplot(fig)
 
 
