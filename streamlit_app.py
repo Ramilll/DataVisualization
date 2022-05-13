@@ -27,14 +27,13 @@ with st.echo(code_location='below'):
     sns.histplot(df["Age"], bins=75)
     plt.title("# of people by Age", fontsize=13)
     st.pyplot(fig)
-    plt.show()
 
     #Survivals between Ages
     st.subheader('Survival distribution')
     plt.figure(figsize=(16, 9))
+    plt.title("Violinplot of survival distribution among different ages and sex", fontsize=13)
     ax = sns.violinplot(x ="Sex", y ="Age", hue ="Survived",data=df, split=True)
     fig = ax.get_figure()
     st.pyplot(fig)
-    plt.show()
 
 
