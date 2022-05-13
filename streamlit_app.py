@@ -23,15 +23,16 @@ with st.echo(code_location='below'):
 
     # Ages distrubution
     st.subheader('#of people by age')
-    fig1 = plt.figure(figsize=(16, 9))
+    fig = plt.figure(figsize=(16, 9))
     sns.histplot(df["Age"], bins=75)
     plt.title("# of people by Age", fontsize=13)
-    st.pyplot(fig1)
+    plt.show()
+    st.pyplot(fig)
 
     #Survivals between Ages
     st.subheader('Survival distribution')
-    ax = sns.violinplot(x ="Sex", y ="Age", hue ="Survived",data = df, split = True)
-    fig2 = ax.get_figure()
-    st.pyplot(fig2)
+    ax = sns.violinplot(x ="Sex", y ="Age", hue ="Survived",data=df, split=True)
+    fig = ax.get_figure()
+    st.pyplot(fig)
 
 
