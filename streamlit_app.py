@@ -21,11 +21,16 @@ with st.echo(code_location='below'):
     st.subheader('Raw Titanic data')
     st.write(df)
 
+    # Ages distrubution
     st.subheader('#of people by age')
-
     fig = plt.figure(figsize=(16, 9))
     sns.histplot(df["Age"], bins=75)
-    plt.title("# of people by Age")
+    plt.title("# of people by Age", fontsize=13)
+    st.pyplot(fig)
+
+    #Survivals between Ages
+    st.subheader('Survival distribution')
+    fig = sns.violinplot(x ="Sex", y ="Age", hue ="Survived",data = df, split = True)
     st.pyplot(fig)
 
 
