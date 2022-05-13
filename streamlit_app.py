@@ -49,8 +49,8 @@ with st.echo(code_location='below'):
 
     # Port of Embarkation
     st.subheader('Distributions of survivals dependent on port of Embarkation')
-    fig = plt.figure(4, figsize=(16, 9))
-    plt.title("Distributions of survivals dependent on port of Embarkation", fontsize=13)
-    sns.catplot(x='Embarked', hue='Survived',
+    # fig = plt.figure(4, figsize=(16, 9))
+    # plt.title("Distributions of survivals dependent on port of Embarkation", fontsize=13)
+    fig = sns.catplot(x='Embarked', hue='Survived',
                 kind='count', col='Pclass', data=df)
     st.pyplot(fig)
