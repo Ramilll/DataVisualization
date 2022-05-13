@@ -16,7 +16,7 @@ with st.echo(code_location='below'):
 
     df = load_data()
 
-    data_load_state.text("Done! (using st.cache)")
+    data_load_state.text("Loaded data using @st.cache")
 
     st.subheader('Raw Titanic data')
     st.write(df)
