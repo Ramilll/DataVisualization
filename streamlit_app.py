@@ -1,3 +1,4 @@
+from utils import load_data
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -7,7 +8,6 @@ import altair as alt
 
 sns.set_palette("pastel")
 
-from utils import load_data
 
 with st.echo(code_location='below'):
     st.title("Titanic data exploration")
@@ -28,12 +28,19 @@ with st.echo(code_location='below'):
     plt.title("# of people by Age", fontsize=13)
     st.pyplot(fig)
 
-    #Survivals between Ages
+    # Survivals between Ages
     st.subheader('Survival distribution')
     plt.figure(figsize=(16, 9))
-    plt.title("Violinplot of survival distribution among different ages and sex", fontsize=13)
-    ax = sns.violinplot(x ="Sex", y ="Age", hue ="Survived",data=df, split=True)
+    plt.title(
+        "Violinplot of survival distribution among different ages and sex", fontsize=13)
+    ax = sns.violinplot(x="Sex", y="Age", hue="Survived", data=df, split=True)
     fig = ax.get_figure()
     st.pyplot(fig)
 
-
+    # Heatmap of survivals between classes
+    st.subheader('Heatmap of survivals between classes')
+    fig = plt.figure(figsize=(16, 9))
+    group = df.groupby(['Pclass', 'Survived'])
+    pclass_survived = group.size().unstack()
+    sns.heatmap(pclass_survived, annot=True, fmt="d")
+    st.pyplot(fig)
