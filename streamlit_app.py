@@ -18,3 +18,11 @@ with st.echo(code_location='below'):
 
     st.subheader('Raw Titanic data')
     st.write(df)
+
+    st.subheader("# of people on Titanic by Age")
+
+    hist_values = np.histogram(df["age"], bins=24, range=(0,24))[0]
+
+    st.bar_chart(hist_values)
+
+
