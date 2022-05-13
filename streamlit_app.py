@@ -26,13 +26,15 @@ with st.echo(code_location='below'):
     fig = plt.figure(figsize=(16, 9))
     sns.histplot(df["Age"], bins=75)
     plt.title("# of people by Age", fontsize=13)
-    plt.show()
     st.pyplot(fig)
+    plt.show()
 
     #Survivals between Ages
     st.subheader('Survival distribution')
     ax = sns.violinplot(x ="Sex", y ="Age", hue ="Survived",data=df, split=True)
     fig = ax.get_figure()
+    fig.set_size_inches(16, 9)
     st.pyplot(fig)
+    plt.show()
 
 
