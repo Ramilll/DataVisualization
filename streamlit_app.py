@@ -40,7 +40,7 @@ with st.echo(code_location='below'):
     # Heatmap of survivals between classes
     st.subheader('Heatmap of survivals between classes')
     st.write(
-        """### pclass: A proxy for socio-economic status (SES): 
+        """ **pclass: A proxy for socio-economic status (SES)**: 
     1st = Upper, 
     2nd = Middle, 
     3rd = Lower, 
