@@ -31,9 +31,9 @@ with st.echo(code_location='below'):
 
     #Survivals between Ages
     st.subheader('Survival distribution')
+    plt.figure(figsize=(16, 9))
     ax = sns.violinplot(x ="Sex", y ="Age", hue ="Survived",data=df, split=True)
     fig = ax.get_figure()
-    fig.set_size_inches(16, 9)
     st.pyplot(fig)
     plt.show()
 
