@@ -23,14 +23,14 @@ with st.echo(code_location='below'):
 
     # Ages distrubution
     st.subheader('#of people by age')
-    fig = plt.figure(figsize=(16, 9))
+    fig = plt.figure(1, figsize=(16, 9))
     sns.histplot(df["Age"], bins=75)
     plt.title("# of people by Age", fontsize=13)
     st.pyplot(fig)
 
     # Survivals between Ages
     st.subheader('Survival distribution')
-    plt.figure(figsize=(16, 9))
+    plt.figure(2, figsize=(16, 9))
     plt.title(
         "Violinplot of survival distribution among different ages and sex", fontsize=13)
     ax = sns.violinplot(x="Sex", y="Age", hue="Survived", data=df, split=True)
@@ -39,9 +39,9 @@ with st.echo(code_location='below'):
 
     # Heatmap of survivals between classes
     st.subheader('Heatmap of survivals between classes')
+    fig = plt.figure(3, figsize=(16, 9))
     plt.title(
         "Heatmap of survivals between classes", fontsize=13)
-    fig = plt.figure(figsize=(16, 9))
     group = df.groupby(['Pclass', 'Survived'])
     pclass_survived = group.size().unstack()
     sns.heatmap(pclass_survived, annot=True, fmt="d")
@@ -49,7 +49,7 @@ with st.echo(code_location='below'):
 
     # Port of Embarkation
     st.subheader('Distributions of survivals dependent on port of Embarkation')
-    fig = plt.figure(figsize=(16, 9))
+    fig = plt.figure(4, figsize=(16, 9))
     plt.title("Distributions of survivals dependent on port of Embarkation", fontsize=13)
     sns.catplot(x='Embarked', hue='Survived',
                 kind='count', col='Pclass', data=df)
