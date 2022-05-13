@@ -40,10 +40,10 @@ with st.echo(code_location='below'):
     # Heatmap of survivals between classes
     st.subheader('Heatmap of survivals between classes')
     """
-    pclass: A proxy for socio-economic status (SES)
-    1st = Upper
-    2nd = Middle
-    3rd = Lower
+    ## pclass: A proxy for socio-economic status (SES): 
+    1st = Upper, 
+    2nd = Middle, 
+    3rd = Lower, 
     """
     fig = plt.figure(3, figsize=(16, 9))
     plt.title(
@@ -56,7 +56,7 @@ with st.echo(code_location='below'):
     # Port of Embarkation
     st.subheader('Distributions of survivals dependent on port of Embarkation')
     """
-    C = Cherbourg, Q = Queenstown, S = Southampton
+    ## C = Cherbourg, Q = Queenstown, S = Southampton
     """
     fig = sns.catplot(x='Embarked', hue='Survived',
                 kind='count', col='Pclass', data=df)
