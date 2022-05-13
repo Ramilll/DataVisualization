@@ -30,7 +30,8 @@ with st.echo(code_location='below'):
 
     #Survivals between Ages
     st.subheader('Survival distribution')
-    fig = sns.violinplot(x ="Sex", y ="Age", hue ="Survived",data = df, split = True)
+    ax = sns.violinplot(x ="Sex", y ="Age", hue ="Survived",data = df, split = True)
+    fig = ax.get_figure()
     st.pyplot(fig)
 
 
