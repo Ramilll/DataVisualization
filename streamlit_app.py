@@ -112,6 +112,7 @@ with st.echo(code_location='below'):
              mime="image/png"
            )
 
+    #Download titanic dataset
     st.subheader("Download titanic dataset")
     @st.cache
     def convert_df(df):
@@ -124,3 +125,8 @@ with st.echo(code_location='below'):
         file_name='titanic.csv',
         mime='text/csv',
     )
+
+    #picture of yourself
+    st.subheader("Take a picture of yourself")
+    st.camera_input("Take a picture")
+
