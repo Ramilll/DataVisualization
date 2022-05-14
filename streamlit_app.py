@@ -91,3 +91,8 @@ with st.echo(code_location='below'):
               color='Survived')
     fig.show()
     st.plotly_chart(fig)
+
+    #Now lets do something intercative
+    COLUMNS_TO_CHOOSE = ["Survived", "Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked"]
+    st.subheader("Ok, lets go interactive!")
+    st.multiselect('Choose a column', COLUMNS_TO_CHOOSE)
