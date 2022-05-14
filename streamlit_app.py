@@ -6,6 +6,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import altair as alt
 import plotly.express as px
+from PIL import Image
 
 sns.set_palette("pastel")
 
@@ -100,3 +101,8 @@ with st.echo(code_location='below'):
     st.write('You selected:', column)
     sns.histplot(df[column], bins=75)
     st.pyplot(fig)
+
+    #Dowmload a picture of titanic
+    img = Image.open('titanic.png')
+    st.subheader("Download picture of titanic")
+    st.download_button('Download picture', img)
