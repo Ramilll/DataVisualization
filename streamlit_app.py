@@ -95,4 +95,8 @@ with st.echo(code_location='below'):
     #Now lets do something intercative
     COLUMNS_TO_CHOOSE = ["Survived", "Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked"]
     st.subheader("Ok, lets go interactive!")
-    st.multiselect('Choose a column', COLUMNS_TO_CHOOSE)
+    column = st.multiselect('Choose a column', COLUMNS_TO_CHOOSE)
+    st.write('You selected:', column)
+    fig = plt.figure(6, figsize=(16, 9))
+    df[column].hist(bins=75)
+    st.pyplot(fig)
