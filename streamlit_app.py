@@ -28,6 +28,23 @@ with st.echo(code_location='below'):
     plt.title("# of people by Age", fontsize=13)
     st.pyplot(fig)
 
+    # Ages distribution between classes
+    st.subheader('Age distribution between p_classes')
+    fig = plt.figure(3, figsize=(16, 9))
+    for pclass in [1, 2, 3]:  # for 3 classes
+        df.query("Pclass == @pclass")["Age"].plot(kind="kde")
+    plt.title("Age distribution between p_classes")
+    plt.legend(("1st", "2nd", "3rd"), fontsize=13)
+    st.pyplot(fig)
+
+    # Classes distribution
+    st.subheader('Barchart of classes distribution')
+    fig = plt.figure(5, figsize=(16, 9))
+    plt.title(
+        "Barchart of classes distribution", fontsize=13)
+    df.Embarked.value_counts(normalize=True).plot(kind="bar", alpha=0.67)
+    st.pyplot(fig)
+
     # Survivals between Ages
     st.subheader('Survival distribution')
     plt.figure(2, figsize=(16, 9))
@@ -35,15 +52,6 @@ with st.echo(code_location='below'):
         "Violinplot of survival distribution among different ages and sex", fontsize=13)
     ax = sns.violinplot(x="Sex", y="Age", hue="Survived", data=df, split=True)
     fig = ax.get_figure()
-    st.pyplot(fig)
-
-    #Ages distribution between classes
-    st.subheader('Age distribution between p_classes')
-    fig = plt.figure(4, figsize=(16, 9))
-    for pclass in [1,2,3]:    ## for 3 classes
-        df.query("Pclass == @pclass")["Age"].plot(kind="kde")
-    plt.title("Age distribution between p_classes")
-    plt.legend(("1st","2nd","3rd"), fontsize=13)
     st.pyplot(fig)
 
     # Heatmap of survivals between classes
@@ -54,7 +62,7 @@ with st.echo(code_location='below'):
     2nd = Middle, 
     3rd = Lower, 
     """)
-    fig = plt.figure(3, figsize=(16, 9))
+    fig = plt.figure(4, figsize=(16, 9))
     plt.title(
         "Heatmap of survivals between classes", fontsize=13)
     group = df.groupby(['Pclass', 'Survived'])
