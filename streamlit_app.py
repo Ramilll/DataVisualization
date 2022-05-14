@@ -83,11 +83,11 @@ with st.echo(code_location='below'):
     #Passengers fares
     st.subheader('Passengers fares')
     fig = px.scatter(df, x='Fare', y='Age', color='Survived', size='Fare')
-    st.pyplot(fig)
+    st.plotly_chart(fig)
 
     #3D diagramm (Pclass, Age, Fare)
     st.subheader('3D diagramm (Pclass, Age, Fare)')
     fig = px.scatter_3d(df, x='Pclass', y='Fare', z='Age',
               color='Survived')
     fig.show()
-    st.pyplot(fig)
+    st.plotly_chart(fig)
