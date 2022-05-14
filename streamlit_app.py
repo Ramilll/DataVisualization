@@ -126,6 +126,11 @@ with st.echo(code_location='below'):
     sns.histplot(df[column], bins=75)
     st.pyplot(fig)
 
+    # Check for stats by name
+    st.subheader("Check for stats by name")
+    name = st.selectbox('Choose a Name', df["Name"])
+    st.write(df.query("Name == @name"))
+
     # Dowmload a picture of titanic
     st.subheader("Download picture of titanic")
     with open("titanic.png", "rb") as file:
