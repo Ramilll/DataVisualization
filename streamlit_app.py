@@ -98,5 +98,5 @@ with st.echo(code_location='below'):
     column = st.selectbox('Choose a column', COLUMNS_TO_CHOOSE)
     st.write('You selected:', column)
     fig = plt.figure(6, figsize=(16, 9))
-    df[column].hist(bins=75)
+    sns.histplot(df[column], bins=75)
     st.pyplot(fig)
