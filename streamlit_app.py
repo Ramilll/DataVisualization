@@ -38,6 +38,7 @@ with st.echo(code_location='below'):
     st.pyplot(fig)
 
     #Ages distribution between classes
+    st.subheader('Age distribution between p_classes')
     fig = plt.figure(4, figsize=(16, 9))
     for pclass in [1,2,3]:    ## for 3 classes
         df.query("Pclass == @pclass")["Age"].plot(kind="kde")
