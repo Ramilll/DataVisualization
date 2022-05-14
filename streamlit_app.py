@@ -5,6 +5,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import altair as alt
+import plotly.express as px
 
 sns.set_palette("pastel")
 
@@ -77,4 +78,16 @@ with st.echo(code_location='below'):
     """)
     fig = sns.catplot(x='Embarked', hue='Survived',
                       kind='count', col='Pclass', data=df)
+    st.pyplot(fig)
+
+    #Passengers fares
+    st.subheader('Passengers fares')
+    fig = px.scatter(df, x='Fare', y='Age', color='Survived', size='Fare')
+    st.pyplot(fig)
+
+    #3D diagramm (Pclass, Age, Fare)
+    st.subheader('3D diagramm (Pclass, Age, Fare)')
+    fig = px.scatter_3d(df, x='Pclass', y='Fare', z='Age',
+              color='Survived')
+    fig.show()
     st.pyplot(fig)
