@@ -103,6 +103,11 @@ with st.echo(code_location='below'):
     st.pyplot(fig)
 
     #Dowmload a picture of titanic
-    img = Image.open('titanic.png')
     st.subheader("Download picture of titanic")
-    st.download_button('Download picture', img)
+    with open("titanic.png", "rb") as file:
+     btn = st.download_button(
+             label="Download picture of titanic",
+             data=file,
+             file_name="titanic.png",
+             mime="image/png"
+           )
