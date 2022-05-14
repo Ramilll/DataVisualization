@@ -33,8 +33,11 @@ with st.echo(code_location='below'):
 
     data_load_state.text("Loaded data using @st.cache")
 
+    #Data description
+    st.subheader('Data description')
     data_description = "\n".join(
         f"* **{key} - {value}**" for key, value in ru_columns.items())
+    st.write(data_description)
 
     st.subheader('Raw Titanic data')
     st.write(df)
