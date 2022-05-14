@@ -10,6 +10,19 @@ from PIL import Image
 
 sns.set_palette("pastel")
 
+ru_columns = {
+    'survival': 'Survival, 0 = No, 1 = Yes',
+    'pclass': 'Ticket class: 1 = 1st, 2 = 2nd, 3 = 3rd',
+    'sex': 'Sex',
+    'age': 'Age in years',
+    'sibsp': '# of siblings / spouses aboard the Titanic',
+    'parch': '# of parents / children aboard the Titanic',
+    'ticket': 'Ticket number',
+    'fare': 'Passenger fare',
+    'cabin': 'Cabin number',
+    'embarked': 'Port of Embarkation: C = Cherbourg, Q = Queenstown, S = Southampton'
+}
+
 
 with st.echo(code_location='below'):
     st.title("Titanic data exploration")
@@ -19,6 +32,9 @@ with st.echo(code_location='below'):
     df = load_data()
 
     data_load_state.text("Loaded data using @st.cache")
+
+    data_description = "\n".join(
+        f"* **{key} - {value}**" for key, value in ru_columns.items())
 
     st.subheader('Raw Titanic data')
     st.write(df)
@@ -81,39 +97,41 @@ with st.echo(code_location='below'):
                       kind='count', col='Pclass', data=df)
     st.pyplot(fig)
 
-    #Passengers fares
+    # Passengers fares
     st.subheader('Passengers fares')
     fig = px.scatter(df, x='Fare', y='Age', color='Survived', size='Fare')
     st.plotly_chart(fig)
 
-    #3D diagramm (Pclass, Age, Fare)
+    # 3D diagramm (Pclass, Age, Fare)
     st.subheader('3D diagramm (Pclass, Age, Fare)')
     fig = px.scatter_3d(df, x='Pclass', y='Fare', z='Age',
-              color='Survived')
+                        color='Survived')
     fig.show()
     st.plotly_chart(fig)
 
-    #Now lets do something intercative
+    # Now lets do something intercative
     fig = plt.figure(7, figsize=(16, 9))
-    COLUMNS_TO_CHOOSE = ["Survived", "Pclass", "Sex", "Age", "SibSp", "Parch", "Fare", "Embarked"]
+    COLUMNS_TO_CHOOSE = ["Survived", "Pclass", "Sex",
+                         "Age", "SibSp", "Parch", "Fare", "Embarked"]
     st.subheader("Ok, lets go interactive!")
     column = st.selectbox('Choose a column', COLUMNS_TO_CHOOSE)
     st.write('You selected:', column)
     sns.histplot(df[column], bins=75)
     st.pyplot(fig)
 
-    #Dowmload a picture of titanic
+    # Dowmload a picture of titanic
     st.subheader("Download picture of titanic")
     with open("titanic.png", "rb") as file:
-     btn = st.download_button(
-             label="Download picture of titanic",
-             data=file,
-             file_name="titanic.png",
-             mime="image/png"
-           )
+        btn = st.download_button(
+            label="Download picture of titanic",
+            data=file,
+            file_name="titanic.png",
+            mime="image/png"
+        )
 
-    #Download titanic dataset
+    # Download titanic dataset
     st.subheader("Download titanic dataset")
+
     @st.cache
     def convert_df(df):
         # IMPORTANT: Cache the conversion to prevent computation on every rerun
@@ -126,7 +144,6 @@ with st.echo(code_location='below'):
         mime='text/csv',
     )
 
-    #picture of yourself
+    # picture of yourself
     st.subheader("Take a picture of yourself")
     st.camera_input("Take a picture")
-
