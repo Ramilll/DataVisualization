@@ -109,7 +109,11 @@ with st.echo(code_location='below'):
     st.subheader('3D diagramm (Pclass, Age, Fare)')
     fig = px.scatter_3d(df, x='Pclass', y='Fare', z='Age',
                         color='Survived')
-    fig.show()
+    st.plotly_chart(fig)
+
+    # Sex/Age:  survived or not explorer
+    st.subheader('Sex/Age:  survived or not explorer')
+    fig = px.strip(df, x='Sex', y="Age", color='Survived', stripmode="overlay")
     st.plotly_chart(fig)
 
     # Now lets do something intercative
