@@ -111,3 +111,16 @@ with st.echo(code_location='below'):
              file_name="titanic.png",
              mime="image/png"
            )
+
+    st.subheader("Download titanic dataset")
+    @st.cache
+    def convert_df(df):
+        # IMPORTANT: Cache the conversion to prevent computation on every rerun
+        return df.to_csv().encode('utf-8')
+
+    st.download_button(
+        label="Download titanic data as CSV",
+        data=convert_df(df),
+        file_name='titanic.csv',
+        mime='text/csv',
+    )
