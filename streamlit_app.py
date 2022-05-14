@@ -38,11 +38,12 @@ with st.echo(code_location='below'):
     st.pyplot(fig)
 
     #Ages distribution between classes
-    plt.figure(4, figsize=(16, 9))
+    fig = plt.figure(4, figsize=(16, 9))
     for pclass in [1,2,3]:    ## for 3 classes
         df.query("Pclass == @pclass")["Age"].plot(kind="kde")
     plt.title("Age distribution between p_classes")
     plt.legend(("1st","2nd","3rd"), fontsize=13)
+    st.pyplot(fig)
 
     # Heatmap of survivals between classes
     st.subheader('Heatmap of survivals between classes')
